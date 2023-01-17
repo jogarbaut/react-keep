@@ -1,13 +1,313 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  /* background-color: #efefef; */
+}
+
+#root {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+
+.App {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Header, .Footer {
+  width: 100%;
+  background-color: #66d8f5;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Header h1 {
+  font-size: 1.5rem;
+}
+
+.Header svg {
+  font-size: 2rem;
+}
+
+.Footer {
+  padding: 0.75rem;
+  display: grid;
+  place-content: center;
+}
+
+.Nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 2px #f5f5f5;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  background-color: #f2f3f5;
+  border-radius: 0.5rem;
+  padding: .75rem;
+}
+
+.searchForm input[type="text"] {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: #f2f3f5;
+  margin-left: 1.5rem;
+}
+
+.searchForm span {
+  display: grid;
+  place-content: center;
+}
+
+.searchForm label {
+  position: absolute;
+  left: -99999px;
+}
+
+.Nav ul {
+  color: #fff;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.Nav li {
+  padding: 1rem;
+}
+
+.Nav li:hover, 
+.Nav li:focus {
+  padding: 1rem;
+}
+
+.Nav li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.Nav li:hover, 
+.Nav li:focus, 
+.Nav li:hover a, 
+.Nav li:focus a  {
+  background-color: #eee;
+  color: #333;
+}
+
+.Nav li:hover a, 
+.Nav li:focus a {
+  cursor: pointer;
+}
+
+.Home, .NewNote, .PostPage, .About, .Missing {
+  width: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: #fff;
+  padding: 0 1rem;
+}
+
+/* Pinned Notes Collection */
+.pinnedNotesCollection {
+  margin-bottom: 1rem;
+}
+
+.note {
+  margin-top: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  padding: .75rem;
+}
+
+.Home .post a {
+  text-decoration: none;
+}
+
+.Home .post a, 
+.Home .post a:visited {
+  color: #000;
+}
+
+.post:first-child {
+  margin-top: 0;
+}
+
+.post:last-child {
+  border-bottom: none;
+}
+
+.noteDate {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.noteBody {
+  margin: 1rem 0;
+}
+
+.newNoteForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: solid 1px #f5f5f5;
+  box-shadow: rgb(0 0 0 / 16%) 1px 1px 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding: .75rem;
+}
+
+.newNoteForm label {
+  position: absolute;
+  left: -99999px;
+}
+
+.newNoteForm input[type='text'], 
+.newNoteForm textarea {
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  margin-right: 0.25rem;
+  outline: none;
+  border: none;
+}
+
+.newNoteForm textarea {
+  min-height: auto;
+}
+
+.newNoteForm textarea:focus {
+  height: 10rem;
+}
+
+.newNoteForm .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.newNoteForm button {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.Missing p, .PostPage p, .NewPost p {
+  margin-top: 1rem;
+}
+
+.PostPage button {
+  height: 48px;
+  min-width: 48px;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.deleteButton {
+  background-color: red;
+}
+
+.editButton {
+  background-color: #333;
+}
+
+.statusMsg {
+  margin-top: 2rem;
+}
+
+@media only screen and (min-width: 610px) {
+  html {
+    font-size: 22px;
+  }
+
+  .Header h1 {
+    font-size: 2rem;
+  }
+
+  .Nav {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Nav ul {
+    text-align: right;
+  }
+
+  .Nav li:hover, 
+  .Nav li:focus, 
+  .Nav li:hover a, 
+  .Nav li:focus a  {
+    background-color: #eee;
+    color: #333;
+  }
+
+  .searchForm {
+    width: 100%;
+    padding: .5rem 0;
+  }
+
+  .searchForm input[type="text"] {
+    margin-left: 0.5rem;
+  }
+
+  .newNoteForm textarea {
+    height: 300px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+
+  .Header svg {
+    font-size: 3rem;
+  }
+
 }
