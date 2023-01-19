@@ -10,6 +10,8 @@ export const NoteProvider = ({ children }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [pinnedSearchResults, setPinnedSearchResults] = useState([]);
   const [unpinnedSearchResults, setUnpinnedSearchResults] = useState([]);
+  const [selectedNoteId, setSelectedNoteId] = useState("")
+  const [selectedNote, setSelectedNote] = useState([])
   // const [label, setLabel] = useState("")
   // const [labelResults, setLabelResults] = useState([])
   // const [isLoading, setIsLoading] = useState
@@ -38,6 +40,13 @@ export const NoteProvider = ({ children }) => {
     setUnpinnedSearchResults(filteredResults)
   }, [notes, searchResults]);
 
+  useEffect(() => {
+    const filteredResult = notes.filter((note) => note.id === selectedNoteId)
+    if (filteredResult.length === 1) {
+      setSelectedNote(filteredResult[0])
+    }
+  }, [notes, selectedNoteId])
+
   return (
     <NoteContext.Provider
       value={{
@@ -47,7 +56,11 @@ export const NoteProvider = ({ children }) => {
         setSearch,
         searchResults,
         pinnedSearchResults,
-        unpinnedSearchResults
+        unpinnedSearchResults,
+        selectedNoteId,
+        setSelectedNoteId,
+        selectedNote,
+        setSelectedNote
       }}
     >
       {children}

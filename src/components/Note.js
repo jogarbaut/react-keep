@@ -1,11 +1,23 @@
-const Note = ({ note }) => {
-  return (
-    <article className="note">
-      <h2>{note.title && note.title}</h2>
-      <p className="noteDate">Created: {note.dateTime}</p>
-      <p className="noteBody">{note.body && note.body}</p>
-    </article>
-  );
-};
+import { useContext } from "react"
+import NoteContext from "../context/NoteContext"
 
-export default Note;
+const Note = ({ note, setNoteIsOpen }) => {
+  const { setSelectedNoteId } = useContext(NoteContext)
+
+  return (
+    <article
+      className="note"
+      style={{ backgroundColor: note.color }}
+      onClick={() => {
+        setNoteIsOpen(true)
+        setSelectedNoteId(note.id)
+      }}
+    >
+      <h3>{note.title && note.title}</h3>
+      <p className="noteDate">Created: {note.dateTime}</p>
+      <div className="noteBody">{note.body && note.body}</div>
+    </article>
+  )
+}
+
+export default Note

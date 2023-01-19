@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
+
 * {
   margin: 0;
   padding: 0;
@@ -22,6 +23,7 @@ body {
 #root {
   flex-grow: 1;
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
 } 
@@ -37,7 +39,6 @@ body {
 
 .Header, .Footer {
   width: 100%;
-  background-color: #66d8f5;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -58,46 +59,137 @@ body {
   place-content: center;
 }
 
-.Nav {
+/* CustomNav */
+
+.custom-nav {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border-bottom: solid 2px #f5f5f5;
-  padding: 1rem 0;
-  margin-bottom: 1rem;
+  padding: .5rem 0;
 }
 
-.searchForm {
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.brand {
+  margin-left: 0.5rem;
+  flex-grow: 1;
+}
+
+.brand__title {
+  font-size: 1rem;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.brand__img {
+  width: 1rem;
+  height: 1.5rem;
+}
+
+.custom-nav__brand {
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+.search-form {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 75%;
+  width: 100%;
   background-color: #f2f3f5;
   border-radius: 0.5rem;
-  padding: .75rem;
+  padding: .25rem;
+  flex-grow: 2;
 }
 
-.searchForm input[type="text"] {
+.search-form input[type="text"] {
   font-family: 'Roboto', sans-serif;
   width: 100%;
   font-size: 1rem;
   border: none;
   outline: none;
   background-color: #f2f3f5;
-  margin-left: 1.5rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
 }
 
-.searchForm span {
+.search-form span {
   display: grid;
   place-content: center;
 }
 
-.searchForm label {
+.search-form label {
   position: absolute;
   left: -99999px;
+}
+
+.search {
+  flex-grow: 3;
+  display: flex;
+  flex: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings {
+  flex-grow: 1;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 0.5rem;
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  font-size: 1rem;
+  padding: .3rem;
+  margin-inline: .1rem;
+  display: grid;
+  place-content: center;
+  color: #6e6e6e;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .1);
+  transition: .25s ease-in-out;
+}
+
+.button--brand {
+  background-color: transparent;
+  border: none;
+  padding: .3rem;
+  margin-inline: .1rem;
+  display: grid;
+  place-content: center;
+}
+
+.button--brand:hover {
+  cursor: pointer;
+}
+
+.button--save {
+  background-color: transparent;
+  border: none;
+  padding: .3rem;
+  display: grid;
+  place-content: center;
+  border-radius: .25rem;
+}
+
+.button--save:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, .1);
+  transition: .15s ease-in-out;
 }
 
 .Nav ul {
@@ -135,7 +227,17 @@ body {
   cursor: pointer;
 }
 
-.Home, .NewNote, .PostPage, .About, .Missing {
+
+/* Side Nav */
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-right: 1px solid lightgray;
+  padding: 0.5rem;
+}
+
+.Home  {
   width: 100%;
   flex-grow: 1;
   overflow-y: auto;
@@ -144,15 +246,45 @@ body {
 }
 
 /* Pinned Notes Collection */
-.pinnedNotesCollection {
-  margin-bottom: 1rem;
+.notes-collection {
+  margin: auto;
+}
+
+.notes-collection__grid {
+  display: grid;
+  grid-gap: .25rem;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.notes-collection__list {
+  margin-bottom: 0.25rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.notes-collection h2 {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-left: .75rem;
 }
 
 .note {
-  margin-top: 1rem;
+  margin-top: 0.25rem;
   border: 1px solid lightgray;
   border-radius: 0.5rem;
   padding: .75rem;
+  height: fit-content;
+}
+
+.note:hover {
+  cursor: pointer;
+}
+
+.note h3 {
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .Home .post a {
@@ -178,27 +310,53 @@ body {
 }
 
 .noteBody {
-  margin: 1rem 0;
+  white-space: pre-wrap;
 }
 
-.newNoteForm {
+/* New Note */
+
+.new-note-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-note {
   display: flex;
   flex-direction: column;
   width: 100%;
   border: solid 1px #f5f5f5;
-  box-shadow: rgb(0 0 0 / 16%) 1px 1px 1rem;
-  border-radius: 1rem;
-  margin-bottom: 1rem;
-  padding: .75rem;
+  box-shadow: 0px 0px 10px #f5f5f5;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  padding: .5rem 1rem;
+  position: relative;
 }
 
-.newNoteForm label {
+.edit-note {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  padding: .5rem 1rem;
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.new-note label, .edit-note label {
   position: absolute;
   left: -99999px;
 }
 
-.newNoteForm input[type='text'], 
-.newNoteForm textarea {
+.new-note input[type='text'], 
+.new-note textarea,
+.edit-note input[type='text'],
+.edit-note textarea {
   font-family: 'Open Sans', sans-serif;
   width: 100%;
   min-height: 48px;
@@ -208,35 +366,59 @@ body {
   margin-right: 0.25rem;
   outline: none;
   border: none;
+  background-color: transparent;
 }
 
-.newNoteForm textarea {
-  min-height: auto;
-}
-
-.newNoteForm textarea:focus {
-  height: 10rem;
-}
-
-.newNoteForm .row {
+.new-note .row, .edit-note .row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.newNoteForm button {
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  font-size: 1rem;
-  cursor: pointer;
-  background: none;
-  border: none;
-  outline: none;
+.color-palette {
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: absolute;
+  background-color: white;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border: solid 1px #f5f5f5;
+  box-shadow: 0px 0px 1px #f5f5f5;
+  border-radius: .5rem;
+  padding: .5rem;
 }
 
-.Missing p, .PostPage p, .NewPost p {
-  margin-top: 1rem;
+.button-color {
+  border: none;
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  display: grid;
+  place-content: center;
+}
+
+.reset-color {
+  border: 1px solid gray;
+}
+
+.button-color:hover {
+  border: 1px solid black;
+}
+
+/* Edit Note */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 10;
 }
 
 .PostPage button {
@@ -302,10 +484,26 @@ body {
   .newNoteForm textarea {
     height: 300px;
   }
+
+  .notes-collection__grid {
+    display: grid;
+    grid-gap: .25rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media only screen and (min-width: 992px) {
-
+  .new-note {
+    max-width: 1200px;
+  }
+  .notes-collection {
+    max-width: 1200px;
+  }
+  .notes-collection__grid {
+    display: grid;
+    grid-gap: .25rem;
+    grid-template-columns: repeat(6, 1fr);
+  }
   .Header svg {
     font-size: 3rem;
   }
