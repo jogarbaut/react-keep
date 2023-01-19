@@ -13,7 +13,7 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -46,10 +46,6 @@ body {
 
 .Header h1 {
   font-size: 1.5rem;
-}
-
-.Header svg {
-  font-size: 2rem;
 }
 
 .Footer {
@@ -92,21 +88,16 @@ body {
   height: 1.5rem;
 }
 
-.custom-nav__brand {
-  font-size: 1.5rem;
-  white-space: nowrap;
-}
-
 .search-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
-  width: 100%;
   background-color: #f2f3f5;
   border-radius: 0.5rem;
-  padding: .25rem;
+  display: flex;
+  flex-direction: row;
   flex-grow: 2;
+  justify-content: center;
+  padding: .25rem;
+  width: 100%;
 }
 
 .search-form input[type="text"] {
@@ -157,23 +148,23 @@ body {
   color: #333;
 }
 
+.button a {
+  color: #333;
+  display: grid;
+  place-content: center;
+}
+
 .button:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, .1);
   transition: .25s ease-in-out;
 }
 
-.button--brand {
-  background-color: transparent;
-  border: none;
+.brand-icon {
   padding: .3rem;
   margin-inline: .1rem;
   display: grid;
   place-content: center;
-}
-
-.button--brand:hover {
-  cursor: pointer;
 }
 
 .date-time {
@@ -181,7 +172,7 @@ body {
 }
 
 .date-time p {
-  font-size: .5rem;
+  font-size: .75rem;
 }
 
 .button--save,
@@ -240,6 +231,7 @@ body {
   border-radius: 0.5rem;
   padding: .75rem;
   height: fit-content;
+  color: #333;
 }
 
 .note:hover {
@@ -252,17 +244,12 @@ body {
   margin-bottom: .5rem;
 }
 
-.noteDate {
-  font-size: 0.75rem;
-  margin-top: 0.25rem;
-}
-
 .noteBody {
   white-space: pre-wrap;
   font-size: .9rem;
 }
 
-/* New Note */
+/* New and Edit Note */
 
 .new-note-container {
   display: flex;
@@ -297,32 +284,6 @@ body {
   z-index: 10;
 }
 
-.instructions {
-  display: flex;
-  flex-direction: column;
-  width: 85%;
-  border-radius: 0.5rem;
-  margin: 1rem 0;
-  padding: .5rem 1rem;
-  position: fixed;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  background-color: white;
-}
-
-/* Edit Note Overlay */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, .7);
-  z-index: 10;
-}
-
 .new-note label,
 .edit-note label {
   position: absolute;
@@ -333,7 +294,7 @@ body {
 .new-note textarea,
 .edit-note input[type='text'],
 .edit-note textarea {
-  font-family: 'Open Sans', sans-serif;
+  font-family: inherit;
   width: 100%;
   min-height: 48px;
   font-size: 1rem;
@@ -343,6 +304,7 @@ body {
   outline: none;
   border: none;
   background-color: transparent;
+  color: #333;
 }
 
 .new-note .row,
@@ -364,7 +326,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  border: solid 1px #f5f5f5;
+  border: solid 2px #f5f5f5;
   box-shadow: 0px 0px 1px #f5f5f5;
   border-radius: .5rem;
   padding: .5rem;
@@ -384,17 +346,106 @@ body {
   cursor: pointer;
 }
 
-.reset-color {
-  border: 1px solid gray;
-}
-
 .button-color:hover {
   border: 1px solid black;
 }
 
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 10;
+}
+
+/* Instructions */
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background-color: white;
+  max-width: 800px;
+}
+
+.instructions__header {
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.instructions__header h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.instructions p {
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.instructions h3 {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.instructions ul {
+  margin-bottom: 1rem;
+}
+
+.instructions li {
+  font-size: 1rem;
+  margin-left: 2rem;
+}
+
+.signature {
+  margin-top: 0.5rem;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+hr {
+  border: 0.5px solid lightgray;
+  margin-bottom: 1rem;
+}
+
+.signature .flex-row {
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button__signature {
+  display: grid;
+  place-content: center;
+  background: none;
+  border: none;
+}
+
+.button__signature a {
+  margin-top: .5rem;
+  font-size: 2rem;
+  color: #333;
+}
+
 @media only screen and (min-width: 610px) {
-  html {
-    font-size: 22px;
+  .new-note {
+    max-width: 600px;
+  }
+
+  .notes-collection {
+    max-width: 600px;
   }
 
   .Header h1 {
@@ -417,26 +468,18 @@ body {
   .notes-collection__grid {
     display: grid;
     grid-gap: .25rem;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media only screen and (min-width: 992px) {
-  .new-note {
-    max-width: 1200px;
-  }
-
-  .notes-collection {
-    max-width: 1200px;
-  }
-
   .notes-collection__grid {
     display: grid;
     grid-gap: .25rem;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .edit-note {
-    max-width: 1000px;
+    max-width: 550px;
   }
 }
