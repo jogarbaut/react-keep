@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/react-keep/static/css/main.d7bf3737.css",
+    "main.js": "/react-keep/static/js/main.49d660f3.js",
+    "static/media/brand-icon.png": "/react-keep/static/media/brand-icon.19da078a2e4986b90ca5.png",
+    "index.html": "/react-keep/index.html",
+    "main.d7bf3737.css.map": "/react-keep/static/css/main.d7bf3737.css.map",
+    "main.49d660f3.js.map": "/react-keep/static/js/main.49d660f3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7bf3737.css",
+    "static/js/main.49d660f3.js"
+  ]
+}
