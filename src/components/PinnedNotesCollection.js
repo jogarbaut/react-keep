@@ -1,8 +1,6 @@
-
 import Note from "./Note"
 
 const PinnedNotesCollection = ({ notes, setNoteIsOpen, displayList }) => {
-
   let noteCollectionClassName
   if (displayList) {
     noteCollectionClassName = "notes-collection__list"

@@ -1,11 +1,10 @@
-// Import context
 import { useState, useContext } from "react"
 import NoteContext from "../context/NoteContext"
-
 import NewNote from "../components/NewNote"
 import PinnedNotesCollection from "../components/PinnedNotesCollection"
 import UnpinnedNotesCollection from "../components/UnpinnedNotesCollection"
 import EditNote from "../components/EditNote"
+import Instructions from "../components/Instructions"
 
 const Home = ({ displayList }) => {
   const { pinnedSearchResults, unpinnedSearchResults, setSelectedNoteId, setSelectedNote } = useContext(NoteContext)

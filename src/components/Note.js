@@ -14,7 +14,6 @@ const Note = ({ note, setNoteIsOpen }) => {
       }}
     >
       <h3>{note.title && note.title}</h3>
-      <p className="noteDate">Created: {note.dateTime}</p>
       <div className="noteBody">{note.body && note.body}</div>
     </article>
   )

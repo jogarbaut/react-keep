@@ -1,15 +1,8 @@
 import { useState, useContext, useRef, useLayoutEffect } from "react"
-
-// Import context
 import NoteContext from "../context/NoteContext"
-
 import ColorPalette from "./ColorPalette"
-
 import { AiOutlinePushpin, AiFillPushpin } from "react-icons/ai"
-
 import { IoColorPaletteOutline } from "react-icons/io5"
-
-// Date-fns package
 import { format } from "date-fns"
 
 const NewNote = () => {

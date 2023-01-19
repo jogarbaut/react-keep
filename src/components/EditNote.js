@@ -1,14 +1,9 @@
 import ReactDom from "react-dom"
 import { useState, useContext, useRef, useLayoutEffect, useEffect } from "react"
 import NoteContext from "../context/NoteContext"
-
 import ColorPalette from "./ColorPalette"
-
 import { AiOutlinePushpin, AiFillPushpin, AiFillDelete } from "react-icons/ai"
-
 import { IoColorPaletteOutline } from "react-icons/io5"
-
-// Date-fns package
 import { format } from "date-fns"
 
 const EditNote = ({ handleNoteClose }) => {
@@ -19,10 +14,10 @@ const EditNote = ({ handleNoteClose }) => {
   const [pinned, setPinned] = useState("")
   const [color, setColor] = useState("")
   const [colorPaletteToggled, setColorPaletteToggled] = useState(false)
+  const [dateTime, setDateTime] = useState("")
 
   const MIN_TEXTAREA_HEIGHT = 32
 
-  const inputRef = useRef()
   const textAreaRef = useRef()
 
   const handleSubmit = async (e) => {
@@ -61,7 +56,8 @@ const EditNote = ({ handleNoteClose }) => {
     setNoteBody(selectedNote.body)
     setPinned(selectedNote.pinned)
     setColor(selectedNote.color)
-  }, [selectedNote])
+    setDateTime(selectedNote.dateTime)
+  }, [selectedNote, selectedNoteId])
 
   return ReactDom.createPortal(
     <>
@@ -70,7 +66,7 @@ const EditNote = ({ handleNoteClose }) => {
         <form className="form" onSubmit={handleSubmit}>
           <div className="row">
             <label htmlFor="noteTitle">Title</label>
-            <input ref={inputRef} id="noteTitle" type="text" placeholder="Title" value={noteTitle} onChange={(e) => setNoteTitle(e.target.value)} />
+            <input id="noteTitle" type="text" value={noteTitle || ""} onChange={(e) => setNoteTitle(e.target.value)} />
             <label htmlFor="pin">Pin</label>
             <button className="button" onClick={handleTogglePin}>
               {pinned ? <AiFillPushpin /> : <AiOutlinePushpin />}
@@ -88,6 +84,9 @@ const EditNote = ({ handleNoteClose }) => {
               resize: "none",
             }}
           />
+          <div className="flex-row date-time">
+            <p>Last modified: {dateTime}</p>
+          </div>
           <div className="row">
             <div className="flex-row">
               <button className="button" onClick={handleToggleColorPalette}>
@@ -96,21 +95,18 @@ const EditNote = ({ handleNoteClose }) => {
               <button className="button" onClick={handleDelete}>
                 <AiFillDelete />
               </button>
-
             </div>
             <div className="flex-row">
-            <button type="submit" className="button--save">
-              Save
-            </button>
-            <button className="button--save" onClick={handleNoteClose}>Cancel</button>
-
+              <button type="submit" className="button--save">
+                Save
+              </button>
+              <button type="button" className="button--cancel" onClick={handleNoteClose}>
+                Cancel
+              </button>
             </div>
-
-
           </div>
           {colorPaletteToggled ? <ColorPalette color={color} setColor={setColor} /> : <></>}
         </form>
-
       </article>
     </>,
     document.getElementById("portal")
