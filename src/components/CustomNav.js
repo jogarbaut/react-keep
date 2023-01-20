@@ -40,8 +40,8 @@ const CustomNav = ({ displayList, setDisplayList }) => {
       <div className="flex-row settings">
         {width < 768 ? (
           <>
-            <button className="button" type="button" onClick={handleRefreshToggled}>
-              <IoRefreshOutline />
+            <button className="button" type="button" onClick={() => setInstructionsIsOpen(true)}>
+              <IoInformationCircleOutline />
             </button>
             <button className="button" type="button" onClick={() => setDisplayList((prevState) => !prevState)}>
               {displayList ? <IoGridOutline /> : <IoReorderFourOutline />}

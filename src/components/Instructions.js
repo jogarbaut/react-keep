@@ -1,7 +1,14 @@
 import ReactDom from "react-dom"
-import { IoCloseOutline, IoLogoGithub, IoLogoLinkedin } from "react-icons/io5"
+import { IoCloseOutline, IoLogoGithub, IoLogoLinkedin, IoGridOutline, IoRefreshOutline, IoReorderFourOutline, IoColorPaletteOutline } from "react-icons/io5"
+import { AiOutlinePushpin } from "react-icons/ai"
 
 const Instructions = ({ handleInstructionsClose }) => {
+
+  const handleResetToggled = async () => {
+    localStorage.removeItem("notesList");
+    window.location.reload(false)
+  }
+
   return ReactDom.createPortal(
     <>
       <div className="overlay"></div>
@@ -16,24 +23,30 @@ const Instructions = ({ handleInstructionsClose }) => {
 
         <h3>React Technologies</h3>
         <ul>
-          <li>React components subscribe to the context changes, as necessary, and will automatically rerender.</li>
-          <li>React useEffect hooks are implemented to enable the user to search their notes using the search bar.</li>
+          <li>React components subscribe to the context changes and automatically rerender.</li>
+          <li>React useEffect and useContext hooks are implemented to enable the user to search and automatically display notes matching the search term in the note title or body.</li>
           <li>React state enables users to interact with new and existing notes.</li>
           <li>A custom React hook was utilized to detect screen width and conditionally render components.</li>
         </ul>
         <h3>User Interface</h3>
         <ul>
           <li>Web application was designed with "mobile-first" design approach.</li>
-          <li>User can toggle between the horizontal stacked notes view or the grid view based on their preference using the </li>
+          <li>User can toggle between the horizontal stacked or grid view based on preference using the <IoReorderFourOutline /> or <IoGridOutline /> icons. </li>
           <li>The custom navigation bar conditionally renders buttons based on device dimensions.</li>
         </ul>
         <h3>Application Features</h3>
         <ul>
           <li>Create a note with the note form and add a title, body, background color, and choose to pin the note.</li>
-          <li>Click a note to edit or delete a note.</li>
-          <li>Use the search bar to enter a search term which will automatically rerender the pinned/unpinned sections.</li>
-          <li>Pin and unpin notes to visually separate the notes.</li>
+          <li>Edit or delete a note by clicking on it.</li>
+          <li>Pin and unpin notes to visually separate the notes using the <AiOutlinePushpin /> icon.</li>
+          <li>Click the <IoColorPaletteOutline /> to select a color for the note.</li>
+          <li>Use the <IoRefreshOutline /> to refresh the window.</li>
         </ul>
+        <div className="flex-row app-reset">
+          <button type="button" className="btn__app-reset" onClick={handleResetToggled}>
+            Application Reset
+          </button>
+        </div>
         <hr />
         <div className="signature">
 
