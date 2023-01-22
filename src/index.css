@@ -353,6 +353,15 @@ body {
   border: 1px solid black;
 }
 
+/* Tesseract Input */
+input[type="file"] {
+  display: none;
+}
+
+label.imageFileInput {
+  position: static !important;
+}
+
 /* Overlay */
 .overlay {
   position: fixed;

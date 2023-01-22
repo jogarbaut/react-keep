@@ -4,6 +4,7 @@ import ColorPalette from "./ColorPalette"
 import { AiOutlinePushpin, AiFillPushpin } from "react-icons/ai"
 import { IoColorPaletteOutline } from "react-icons/io5"
 import { format } from "date-fns"
+import TesseractInput from "./TesseractInput"
 
 const NewNote = () => {
   const [noteTitle, setNoteTitle] = useState("")
@@ -79,9 +80,12 @@ const NewNote = () => {
             }}
           />
           <div className="row">
-            <button className="button" onClick={handleToggleColorPalette}>
-              <IoColorPaletteOutline />
-            </button>
+            <div className="row">
+              <button className="button" onClick={handleToggleColorPalette}>
+                <IoColorPaletteOutline />
+              </button>
+              <TesseractInput noteBody={noteBody} setNoteBody={setNoteBody} />
+            </div>
             <button type="submit" className="button--save">
               Save
             </button>

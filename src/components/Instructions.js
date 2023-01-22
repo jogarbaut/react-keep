@@ -1,5 +1,5 @@
 import ReactDom from "react-dom"
-import { IoCloseOutline, IoLogoGithub, IoLogoLinkedin, IoGridOutline, IoRefreshOutline, IoReorderFourOutline, IoColorPaletteOutline } from "react-icons/io5"
+import { IoCloseOutline, IoLogoGithub, IoLogoLinkedin, IoGridOutline, IoRefreshOutline, IoReorderFourOutline, IoColorPaletteOutline, IoImageOutline } from "react-icons/io5"
 import { AiOutlinePushpin } from "react-icons/ai"
 
 const Instructions = ({ handleInstructionsClose }) => {
@@ -41,6 +41,7 @@ const Instructions = ({ handleInstructionsClose }) => {
           <li>Pin and unpin notes to visually separate the notes using the <AiOutlinePushpin /> icon.</li>
           <li>Click the <IoColorPaletteOutline /> to select a color for the note.</li>
           <li>Use the <IoRefreshOutline /> to refresh the window.</li>
+          <li>Click the <IoImageOutline /> to upload a photo and automatically extract the text to the note body (images with good contrast between background and text work best).</li>
         </ul>
         <div className="flex-row app-reset">
           <button type="button" className="btn__app-reset" onClick={handleResetToggled}>

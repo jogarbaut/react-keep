@@ -5,6 +5,7 @@ import ColorPalette from "./ColorPalette"
 import { AiOutlinePushpin, AiFillPushpin, AiFillDelete } from "react-icons/ai"
 import { IoColorPaletteOutline } from "react-icons/io5"
 import { format } from "date-fns"
+import TesseractInput from "./TesseractInput"
 
 const EditNote = ({ handleNoteClose }) => {
   const { selectedNote, selectedNoteId, notes, setNotes } = useContext(NoteContext)
@@ -92,6 +93,7 @@ const EditNote = ({ handleNoteClose }) => {
               <button className="button" onClick={handleToggleColorPalette}>
                 <IoColorPaletteOutline />
               </button>
+              <TesseractInput noteBody={noteBody} setNoteBody={setNoteBody} />
               <button className="button" onClick={handleDelete}>
                 <AiFillDelete />
               </button>
