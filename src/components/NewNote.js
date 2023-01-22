@@ -31,7 +31,7 @@ const NewNote = () => {
     const dateTime = format(new Date(), "MMMM dd, yyyy pp")
     const newNote = { id, pinned, title: noteTitle, dateTime, body: noteBody, color }
     try {
-      const allNotes = [...notes, newNote]
+      const allNotes = [newNote, ...notes]
       setNotes(allNotes)
       setNoteTitle("")
       setNoteBody("")
