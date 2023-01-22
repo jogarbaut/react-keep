@@ -1,8 +1,9 @@
 import { createContext, useState, useEffect } from "react"
-const NoteContext = createContext({})
+import { starterNoteDataArray } from "../data/starterNoteData"
 
+const NoteContext = createContext({})
 export const NoteProvider = ({ children }) => {
-  const [notes, setNotes] = useState(JSON.parse(localStorage.getItem("notesList")) || [])
+  const [notes, setNotes] = useState(JSON.parse(localStorage.getItem("notesList")) || starterNoteDataArray)
   const [search, setSearch] = useState("")
   const [searchResults, setSearchResults] = useState([])
   const [pinnedSearchResults, setPinnedSearchResults] = useState([])

@@ -233,10 +233,12 @@ body {
   padding: .75rem;
   height: fit-content;
   color: #333;
+  transition: .25s;
 }
 
 .note:hover {
   cursor: pointer;
+  border: 1px solid #333;
 }
 
 .note h3 {
