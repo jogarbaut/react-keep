@@ -15,7 +15,7 @@ const TesseractInput = ({ setNoteBody }) => {
 
   return (
     <>
-      <label for="file-upload" className="imageFileInput button">
+      <label htmlFor="file-upload" className="imageFileInput button">
         <IoImageOutline />
       </label>
       <input id="file-upload" type="file" onChange={(e) => setImageFile(e.target.files[0])} />
